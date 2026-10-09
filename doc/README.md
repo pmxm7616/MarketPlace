@@ -46,3 +46,27 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 - [Investigación y fuentes Codex](ai-governance/codex-research.md)
 
 **Nota:** las reglas documentales están disponibles; aún no existen aplicación, pruebas ejecutables ni CI configurado.
+
+
+## Auditoría de integridad y controles iniciales (2026-10-09)
+- [Alcance del núcleo y preguntas bloqueantes](product/core-scope.md)
+- [Contratos del dominio](architecture/domain-contracts.md)
+- [API y compatibilidad](architecture/api-and-compatibility.md)
+- [Modelo de extensiones](architecture/extension-model.md)
+- [Jerarquía de decisiones y excepciones](ai-governance/decision-policy.md)
+- [Riesgos del desarrollo con IA](ai-governance/vibecoding-risks.md)
+- [Puertas de calidad y estado de implementación](development/quality-gates.md)
+- [Modelo de amenazas](security/threat-model.md)
+- [Control automático de gobernanza](../scripts/check-governance.mjs) y [tests](../tests/governance.test.mjs)
+- [Workflow de GitHub Actions](../.github/workflows/governance.yml)
+- [Plantilla de Pull Request](../.github/pull_request_template.md)
+
+**Distinción crítica:** workflow creado ≠ checks ejecutados ≠ rama protegida. El primer control valida archivos/enlaces; el resto de pruebas de aplicación permanece pendiente hasta implementar el scaffold.
+
+### Registro adicional de decisiones
+| ID | Estado | Decisión | Motivo |
+| --- | --- | --- | --- |
+| D-009 | Acordado | Requisitos funcionales aprobados antes de comportamiento de producto | Evitar invención por IA |
+| D-010 | Acordado | Gates progresivos y evidencia verificable | Evitar pruebas fabricadas |
+| D-011 | Acordado | Documentación sincronizada en el mismo cambio | Reducir deriva del contexto |
+| D-012 | Pendiente | Habilitar protección de rama y revisión obligatoria | Depende de configuración GitHub |
