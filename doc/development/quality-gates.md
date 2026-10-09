@@ -23,3 +23,11 @@
 
 ## Evidencias esperadas
 REQ→TEST, comando, resultado, enlace a ejecución CI cuando exista y revisión del diff.
+
+
+## Primer control creado
+- `scripts/check-governance.mjs`: verifica presencia de rutas esenciales, encabezados H1 y enlaces Markdown relativos.
+- `tests/governance.test.mjs`: pruebas del validador.
+- `.github/workflows/governance.yml`: ejecuta esas pruebas y el validador en push/PR.
+
+**Alcance limitado:** no valida aún cobertura de REQ→TEST, normativa semántica, compilación, SAST, autorización, migraciones ni branch protection. No marcar esos gates como satisfechos.
