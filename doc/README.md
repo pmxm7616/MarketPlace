@@ -70,3 +70,7 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 | D-010 | Acordado | Gates progresivos y evidencia verificable | Evitar pruebas fabricadas |
 | D-011 | Acordado | Documentación sincronizada en el mismo cambio | Reducir deriva del contexto |
 | D-012 | Pendiente | Habilitar protección de rama y revisión obligatoria | Depende de configuración GitHub |
+
+
+### D-013 — Protección de `main` diferida (2026-10-09)
+**Estado: ACORDADO.** Durante la fase inicial de creación del proyecto **no se habilitará protección obligatoria de la rama `main`**. El equipo podrá trabajar directamente en `main` sin bloqueos de aprobación ni checks requeridos. Los workflows de calidad que existan seguirán siendo informativos y se revisarán sus resultados, pero no bloquearán integraciones. Revisar esta decisión antes de incorporar colaboradores, preparar despliegues productivos o estabilizar una primera versión. Esta decisión reemplaza la urgencia expresada en D-012, que queda **diferida**, no cancelada.
