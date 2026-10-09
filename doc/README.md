@@ -106,3 +106,13 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 - [Plan de cierre P0 y criterios de aceptación](development/p0-contract-closure.md)
 
 **Estado:** contratos detallados redactados como **PROPUESTA PARA REVISIÓN**. Las seis decisiones D-018 siguen aprobadas; no se han aprobado automáticamente patrones de username adicionales, longitudes de descripción, paginación, valores concretos de calidad WebP ni estados internos. Codex debe consultar estos contratos antes de implementar flujos de vendedor.
+
+
+### D-019–D-021 — Parámetros adicionales P0 (2026-10-09)
+| ID | Estado | Decisión |
+| --- | --- | --- |
+| D-019 | **ACORDADO** | Username 3–30, minúsculas/dígitos y guion solo interior; prohibidos guion inicial, final y consecutivos |
+| D-020 | **ACORDADO** | Crear publicación activa únicamente después de validar todos los campos y procesar correctamente todas las imágenes; sin alta pública parcial |
+| D-021 | **ACORDADO** | Entrada JPEG, PNG y WebP; producir dos variantes WebP de hasta 1600 y 480 px, manteniendo proporción |
+
+Siguen **PENDIENTES** calidad de compresión, límites de megapíxeles, gestión transitoria de cargas y restantes decisiones de [producto](product/open-decisions.md). Contratos actualizados en [MVP v0.2](product/contracts-mvp-v1.md); plan maestro [v0.3](development/master-plan.md).
