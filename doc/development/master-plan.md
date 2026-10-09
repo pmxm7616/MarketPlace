@@ -152,3 +152,11 @@ Facebook App Review/configuración externa, variaciones de formatos de imágenes
 
 ## Principio de tiempo
 No establecer duración o fecha de entrega sin medir esfuerzo, prioridades y dependencias. Cada TASK permite descomposición adicional en issues.
+
+
+## Avance P0 (2026-10-09)
+- [x] P0A: redactar contratos por operación, pruebas negativas e invariantes: [contratos MVP](../product/contracts-mvp-v1.md).
+- [ ] P0B: cerrar decisiones adicionales de producto y políticas que impactan esquema/UX.
+- [ ] P0C: formalizar estructura definitiva de persistencia, rutas, validación y matriz REQ→TEST.
+- [ ] P0D: iniciar P1 técnico con contratos aplicables aprobados.
+- Ver [control de cierre](p0-contract-closure.md). Este avance es documental; no implica ejecución de pruebas ni código implementado.
