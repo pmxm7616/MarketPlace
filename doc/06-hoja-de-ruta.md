@@ -64,3 +64,11 @@ Cada decisión nueva debe registrarse en `doc/README.md` y actualizar la documen
 - [ ] Establecer contratos y matriz REQ→TEST para primer módulo aprobado.
 
 **Próximo hito:** validar CI y cerrar primero el modelo comercial, identidad/roles y ciclo de vida de publicaciones. No adelantar implementaciones de negocio basadas en supuestos.
+
+
+### Ajuste acordado: política de ramas (2026-10-09)
+- [x] Decidir que `main` permanecerá **sin protección obligatoria durante el inicio**.
+- [ ] **Más adelante, si las necesidades lo justifican:** evaluar protección de ramas, aprobaciones y checks requeridos (no es una tarea bloqueante para empezar a desarrollar).
+- [ ] Mantener y verificar CI como **señal informativa**, sin exigirlo para escribir en `main`.
+
+La tarea anterior «Habilitar reglas de protección de `main` con checks obligatorios y aprobaciones» se considera **diferida por decisión expresa del responsable**. No solicitar su activación de nuevo como requisito del arranque.
