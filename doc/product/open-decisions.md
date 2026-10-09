@@ -1,20 +1,20 @@
 # Decisiones de producto — aprobadas y pendientes
 
-**Estado actualizado: 2026-10-09.** Los seis parámetros aprobados expresamente por el responsable son vinculantes para el MVP. Las demás recomendaciones de la tabla siguen sin aprobación. Codex no debe extender el alcance de una aprobación a detalles no mencionados.
+**Estado actualizado: 2026-10-09.** Los seis parámetros iniciales y las tres decisiones adicionales de P0 aprobadas expresamente por el responsable son vinculantes para el MVP. Las demás recomendaciones de la tabla siguen sin aprobación. Codex no debe extender el alcance de una aprobación a detalles no mencionados.
 
 | ID | Pregunta | Recomendación inicial | Impacto |
 | --- | --- | --- | --- |
-| PROD-011 | Username | **APROBADO:** 3–30 caracteres, letras minúsculas, números y guion; único. **Pendiente:** normalización y restricciones de guiones inicial/final, elección durante onboarding | Rutas y migración |
+| PROD-011 | Username | **APROBADO:** 3–30 caracteres, letras minúsculas, números y guion; único. **APROBADO (D-019):** guion solo interior, no inicial/final ni doble guion. **Pendiente:** momento de elección en onboarding | Rutas y migración |
 | PROD-012 | Cambio de username | **APROBADO:** username fijo durante MVP. Posibles cambios y redirecciones solo en una fase futura | SEO/URLs |
 | PROD-013 | Número de WhatsApp | **APROBADO:** obligatorio y en formato internacional, sin verificación SMS en MVP. **Pendiente:** UX/validación precisa y gestión de cambios | Seguridad, costos |
 | PROD-014 | Cantidad de imágenes | **APROBADO:** de 1 a 10 imágenes por artículo | UX, costos |
-| PROD-015 | Límites de carga | **APROBADO:** máximo 10 MiB por archivo original; salida optimizada WebP. **Pendiente:** formatos de entrada admitidos, dimensiones máximas y variantes exactas | UX, seguridad |
+| PROD-015 | Límites de carga | **APROBADO:** máximo 10 MiB por archivo original; salida optimizada WebP. **APROBADO (D-021):** admitir JPEG, PNG y WebP; generar dos variantes WebP con dimensiones máximas 1600 y 480 px. **Pendiente:** calidad, límites de megapíxeles y forma de persistencia | UX, seguridad |
 | PROD-016 | Precio | **APROBADO:** moneda BOB (Bs), importe mayor a cero, guardado en centavos enteros. **Pendiente:** precio negociable, formatos UX y precio máximo | BD/UI |
 | PROD-017 | Baja del producto | **APROBADO:** desactivar sin borrar definitivamente; reactivación es posibilidad **futura**, no funcionalidad aprobada del MVP. Nombres de estados técnicos sujetos a contrato | SEO/cache |
 | PROD-018 | Edición | Campos e imágenes; mantener URL de producto estable | SEO |
 | PROD-019 | Mensaje WhatsApp | **APROBADO:** el mensaje predefinido incluye nombre del artículo y enlace al producto. **Pendiente:** texto literal, branding, idioma y codificación de plantilla | UX |
 | PROD-020 | Nombre visible | `Tienda de {username}`; slug único en URL | SEO/UX |
-| PROD-021 | Estado previo a publicar | Borrador interno durante carga; publicación atómica al finalizar | Integridad |
+| PROD-021 | Estado previo a publicar | **APROBADO (D-020):** nueva publicación pasa a visible/activa únicamente después de validar todos los campos y completar correctamente el procesamiento de todas sus imágenes. **Pendiente:** si se usa borrador interno transitorio y cómo se limpia | Integridad |
 | PROD-022 | Listado | Más recientes primero, 20 por página, cursor si se necesita | Consultas |
 | PROD-023 | Contenido prohibido/moderación | Política y mecanismo de reporte mínimos antes de apertura pública | Riesgo legal/abuso |
 | PROD-024 | Eliminación de cuenta y retención | Definir flujo y plazos antes de producción | Privacidad |
@@ -42,4 +42,4 @@
 - Baja lógica del artículo sin borrado definitivo; la reactivación no forma parte del MVP confirmado.
 - Enlace WhatsApp con mensaje predefinido que incorpora nombre del artículo y URL del detalle.
 
-**No aprobados por implicación:** 1600/480 px, niveles de calidad, formatos de entrada, patrón completo de usernames, reactivación, texto literal del mensaje, comprobación de propiedad del teléfono y otros parámetros no mencionados. Son decisiones aún abiertas.
+**Aprobado adicionalmente (D-019–D-021):** username sin guion al inicio o final ni guiones consecutivos; publicación directamente activa solo después de campos e imágenes correctos; JPEG/PNG/WebP como entrada y dos variantes WebP de 1600 y 480 px. **Siguen sin aprobarse por implicación:** calidad de compresión, límites de megapíxeles, manejo de borradores técnicos transitorios, reactivación, texto literal del mensaje, verificación de propiedad del teléfono y detalles no mencionados.
