@@ -72,3 +72,14 @@ Cada decisión nueva debe registrarse en `doc/README.md` y actualizar la documen
 - [ ] Mantener y verificar CI como **señal informativa**, sin exigirlo para escribir en `main`.
 
 La tarea anterior «Habilitar reglas de protección de `main` con checks obligatorios y aprobaciones» se considera **diferida por decisión expresa del responsable**. No solicitar su activación de nuevo como requisito del arranque.
+
+
+## Plan de implementación detallado (2026-10-09)
+El plan operativo vigente es [`doc/development/master-plan.md`](development/master-plan.md), con P0–P11 y tareas TASK. El alcance de producto ya fue aclarado en [especificación funcional](product/functional-specification.md):
+- [x] Modelo comercial de contacto WhatsApp, sin pagos internos.
+- [x] Registro Facebook, completar WhatsApp y username único.
+- [x] Catálogo público, detalle, tienda, publicación, edición y baja.
+- [x] Subida múltiple con conversión/optimización de imágenes como requisito.
+- [ ] Cerrar decisiones de valores y casos extremos en [open-decisions.md](product/open-decisions.md).
+- [ ] Aprobar contratos/modelo de datos y comenzar P1 técnico.
+- [ ] Validar workflows de gobernanza existentes; `main` sigue sin protección por D-013.
