@@ -45,7 +45,7 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 - [Registro de ADR](decisions/README.md)
 - [Investigación y fuentes Codex](ai-governance/codex-research.md)
 
-**Nota:** las reglas documentales están disponibles; aún no existen aplicación, pruebas ejecutables ni CI configurado.
+**Nota:** aún no existe aplicación. Ya hay validación documental y workflow de gobernanza; su ejecución exitosa sigue sin verificarse y los tests de aplicación no existen.
 
 
 ## Auditoría de integridad y controles iniciales (2026-10-09)
@@ -94,4 +94,8 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 | D-016 | Acordado | Catálogo y tiendas públicas, gestión propia de publicaciones con imágenes optimizadas | Alcance del MVP |
 | D-017 | Propuesto | Procesamiento Sharp/WebP y variantes 1600/480 | Optimización; parámetros sujetos a validación |
 
-**D-007 queda resuelta por D-014.** Las decisiones de detalles (límites, username, estados, onboarding, privacidad y moderación) continúan propuestas en `product/open-decisions.md`. No interpretar el antiguo listado de «módulos candidatos» como contradicción: la especificación funcional prevalece en capacidades aprobadas.
+**D-007 queda resuelta por D-014.** Desde D-018, las reglas concretas de username, WhatsApp, galería, precio, baja y contenido mínimo del mensaje están aprobadas. Sus subdetalles no mencionados, la privacidad y la moderación siguen abiertos en `product/open-decisions.md`. No interpretar el antiguo listado de «módulos candidatos» como contradicción: la especificación funcional prevalece en capacidades aprobadas.
+
+
+### D-018 — Seis parámetros de MVP confirmados (2026-10-09)
+**Estado: ACORDADO por el responsable.** Username único, fijo inicialmente y de 3–30 caracteres (a–z, 0–9 y guion); WhatsApp obligatorio internacional, sin SMS; galería de 1–10 imágenes con originales ≤10 MiB y salidas WebP optimizadas; precio BOB estrictamente positivo en centavos enteros; baja lógica sin eliminación definitiva (reactivación posterior, no MVP); mensaje predefinido de WhatsApp con nombre del artículo y URL. Ver [registro exhaustivo de parámetros](product/open-decisions.md) y [plan maestro v0.2](development/master-plan.md). No se aprueban implícitamente tamaños de imagen ni texto literal del mensaje.
