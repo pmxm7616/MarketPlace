@@ -36,3 +36,15 @@ Cada CAP aprobada debe tener: propietario de módulo, historias/escenarios, perm
 
 ## Política de bloqueo
 Se puede crear tooling genérico y esqueleto sin presuponer PROD-001..010; no se implementan flujos de publicación/autenticación definitiva hasta resolver sus decisiones correspondientes.
+
+
+## Resolución parcial por definición de MVP (2026-10-09)
+**Este documento representa preguntas históricas de planificación.** El responsable ya confirmó el modelo principal. La [especificación funcional vigente](functional-specification.md) tiene precedencia:
+- PROD-001: marketplace de anuncios con WhatsApp, **sin carrito/checkout/pagos** en MVP.
+- PROD-002: cualquier usuario registrado mediante Facebook puede vender tras completar WhatsApp y username.
+- PROD-003: visitante público; usuario/vendedor autenticado; permisos del propietario. Rol administrador todavía sin detallar.
+- PROD-006: campos confirmados por ítem: nombre, descripción, precio y varias imágenes; taxonomía dinámica no requerida para MVP.
+- PROD-007: perfil público «Tienda de {username}» y enlace de contacto WhatsApp.
+- PROD-010: template crea marketplaces independientes, sin acoplar marca o categorías.
+
+Preguntas restantes, parámetros sugeridos y estados están centralizados en [decisiones abiertas](open-decisions.md). No implementar capacidades de la tabla histórica que no aparezcan confirmadas en el MVP.
