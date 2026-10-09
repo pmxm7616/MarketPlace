@@ -5,13 +5,13 @@
 ## Objetivos
 Reducir tráfico/costo, preservar calidad visual, no retener metadatos privados y evitar que uploads arbitrarios consuman recursos o comprometan el servidor.
 
-## Política inicial propuesta (parámetros por validar)
-- Permitir JPEG, PNG y WebP estáticos; detectar contenido real, no confiar en extensión ni cabecera del cliente.
-- Máximo **10 MiB por original** y **10 imágenes por publicación**.
+## Parámetros aprobados y recomendaciones por validar
+- **PROPUESTO:** admitir JPEG, PNG y WebP estáticos; formatos de entrada no aprobados. Validar contenido real, no confiar en extensión ni cabecera del cliente.
+- **APROBADO:** galería de **1 a 10 imágenes por publicación**, cada original con límite de **10 MiB** (10 × 1024 × 1024 bytes).
 - Decodificar con límite de dimensiones y megapíxeles; evitar bombas de descompresión.
 - Corregir orientación EXIF antes de redimensionar; eliminar GPS/EXIF/metadatos no necesarios.
-- Variante principal: máximo 1600 px en lado mayor, sin ampliación, WebP calidad inicial 78–82.
-- Variante miniatura: máximo 480 px en lado mayor, sin ampliación, WebP calidad inicial 72–78.
+- **PROPUESTO:** variante principal hasta 1600 px en lado mayor, sin ampliación, WebP calidad inicial 78–82 (tamaño y calidad aún no aprobados).
+- **PROPUESTO:** miniatura hasta 480 px en lado mayor, sin ampliación, WebP calidad inicial 72–78 (tamaño y calidad aún no aprobados).
 - Registrar dimensiones, peso, formato, orden, clave y checksum.
 - Preservar proporciones; evitar recorte automático de imágenes de producto.
 - Guardar solo variantes procesadas en Spaces por defecto; originales se descartan una vez confirmada la transformación.
@@ -32,6 +32,9 @@ Reducir tráfico/costo, preservar calidad visual, no retener metadatos privados 
 
 ## Seguridad y capacidad
 No aceptar SVG de usuario (XSS), GIF animado ni HEIC hasta definir canal seguro. Proteger endpoints contra abuso, rechazar archivos maliciosos, configurar límites de carga y contabilizar costos. Procesamiento sin workers puede afectar latencia del Droplet: medir y migrar a cola/worker si la carga lo exige.
+
+## Formato de salida acordado
+**APROBADO:** las imágenes que se almacenarán y servirán en la galería del MVP se redimensionan, optimizan y convierten a **WebP**. Las dimensiones y calidades exactas continúan propuestas.
 
 ## WebP vs AVIF
 WebP recomendado para primera versión por equilibrio de calidad, compatibilidad y esfuerzo de CPU. AVIF podría añadirse tras benchmarks por resultar más compacto en algunos casos, pero con codificación más costosa.
