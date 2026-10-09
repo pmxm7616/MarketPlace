@@ -1,6 +1,6 @@
 # MarketPlace — especificación funcional del MVP
 
-**Fecha:** 2026-10-09. **Estado:** alcance y seis parámetros operativos aprobados; otras configuraciones siguen propuestas. **Referencia:** [decisiones abiertas](open-decisions.md).
+**Fecha:** 2026-10-09. **Estado:** alcance, seis parámetros iniciales y tres decisiones adicionales P0 aprobadas; otras configuraciones siguen propuestas. **Referencia:** [decisiones abiertas](open-decisions.md).
 
 ## Propósito y modelo comercial
 MarketPlace es un **template reutilizable** para desplegar marketplaces independientes de anuncios/productos. No es multi-tenant. **No hay checkout ni pagos dentro del MVP**; la intención de compra se gestiona por WhatsApp fuera de la plataforma. El template no asume categorías, marcas ni comisiones.
@@ -36,14 +36,14 @@ MarketPlace es un **template reutilizable** para desplegar marketplaces independ
 ### US-002: registro e inicio de sesión con Facebook
 - REQ-004: el flujo de entrada usa únicamente Facebook como proveedor del MVP.
 - REQ-005: usuario sin WhatsApp completado puede autenticar, pero no publicar.
-- REQ-006: username único y fijo inicialmente, de 3–30 caracteres compuestos por letras minúsculas, números y guion; validar en servidor y con constraint único en BD.
+- REQ-006: username único y fijo inicialmente, de 3–30 caracteres compuestos por letras minúsculas, números y guion solo interior; no inicia/termina con guion ni admite guiones consecutivos. Validar en servidor y con constraint único en BD.
 - TEST-003: callback válido/inválido, identidad, sesiones y errores OAuth.
 - TEST-004: dos registros con el mismo username no producen duplicados.
 
 ### US-003: publicar artículo
 - REQ-007: solo usuario autenticado con perfil completo puede publicar.
 - REQ-008: nombre, descripción, precio BOB > 0 representado en centavos enteros y galería de 1–10 imágenes se validan del lado servidor. Cada original tiene límite de 10 MiB.
-- REQ-009: ítem nuevo pertenece al usuario autenticado, nunca a un ID arbitrario enviado por cliente.
+- REQ-009: ítem nuevo pertenece al usuario autenticado, nunca a un ID arbitrario enviado por cliente. Se crea activo solo después de validar todos los campos y terminar con éxito el procesamiento de todas las imágenes; ningún resultado parcial es visible.
 - TEST-005: creación válida y rechazos por campos inválidos, sesión ausente y perfil incompleto.
 - TEST-006: prevención de asignar publicaciones a otro vendedor.
 
@@ -68,7 +68,7 @@ MarketPlace es un **template reutilizable** para desplegar marketplaces independ
 ### US-007: imágenes
 - REQ-016: subida solo autenticada, asociada a artículo propio o borrador autorizado.
 - REQ-017: validar tipo real, tamaño, cantidad y dimensiones; no confiar en MIME del navegador.
-- REQ-018: conversión a WebP optimizado, con orientación corregida y sin metadatos sensibles; publicación solo tras procesamiento correcto.
+- REQ-018: aceptar originales JPEG, PNG o WebP y generar dos variantes WebP optimizadas (hasta 1600 y 480 px); conservar proporciones, corregir orientación y omitir metadatos sensibles; publicar activo únicamente después de completar todos los procesamientos.
 - REQ-019: variantes de imagen servidas desde almacenamiento de objetos; orden de galería consistente.
 - TEST-013: subida válida, archivo falso, archivo excesivo, imagen corrupta y autoría ajena.
 - TEST-014: dimensiones/formato, eliminación/reemplazo e indisponibilidad del almacenamiento.
@@ -81,14 +81,14 @@ MarketPlace es un **template reutilizable** para desplegar marketplaces independ
 - Precio **aprobado** en bolivianos (BOB/Bs), estrictamente mayor que cero y almacenado en centavos enteros; cambios de moneda por marketplace derivado requieren contrato explícito.
 
 ## Parámetros operativos aprobados
-- Username: 3–30 caracteres de letras minúsculas, dígitos o guion; único y fijo inicialmente.
+- Username: 3–30 caracteres de letras minúsculas, dígitos o guion interior (nunca al principio/final ni consecutivo); único y fijo inicialmente.
 - WhatsApp: obligatorio en formato internacional; sin verificación SMS.
-- Galería: 1–10 imágenes, ≤10 MiB por archivo original, salida WebP optimizada.
+- Galería: 1–10 imágenes, ≤10 MiB por original JPEG/PNG/WebP; dos variantes WebP optimizadas de hasta 1600 y 480 px.
 - Precio: BOB, >0, persistencia exacta en centavos.
 - Baja: lógica, sin eliminación permanente; futura reactivación fuera del alcance confirmado.
 - WhatsApp predefinido: incluir nombre del artículo y URL de detalle.
 
-No se han aprobado valores de redimensionado concretos, expresiones regulares adicionales, reactivación ni texto literal del mensaje. Ver [decisiones de producto](open-decisions.md).
+Aprobado adicionalmente: creación directa de publicación activa solo si todos los campos e imágenes son correctos; patrón de guiones del username; formatos de entrada y tamaños WebP 1600/480. Siguen propuestos calidad exacta, límites de megapíxeles, manejo interno de carga, reactivación y texto literal del mensaje. Ver [decisiones de producto](open-decisions.md).
 
 ## Fuera del MVP
 Carrito, checkout, pasarela de pago, entrega, facturación, comentarios, reseñas, chat interno, pagos por destacar, suscripción monetizada, categorías/filtros sofisticados, geolocalización, app móvil nativa y múltiples proveedores OAuth. No implementarlos sin alcance aprobado.
