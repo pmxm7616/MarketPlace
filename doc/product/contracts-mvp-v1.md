@@ -6,7 +6,7 @@
 
 - El catálogo, detalle y tienda son visibles sin sesión; únicamente publicaciones activas pueden aparecer.
 - Facebook es el único método de autenticación; un usuario debe registrar username y WhatsApp para publicar.
-- Username de 3 a 30 caracteres entre letras minúsculas, dígitos y guion interior; sin guion inicial/final ni guiones consecutivos; único y fijo en MVP. Patrón equivalente: `^[a-z0-9]+(?:-[a-z0-9]+)*# Contratos funcionales MVP — versión 0.2
+- Username de 3 a 30 caracteres, letras minúsculas/dígitos y guiones interiores simples, nunca consecutivos o en los extremos. Regex `^[a-z0-9]+(?:-[a-z0-9]+)*# Contratos funcionales MVP — versión 0.2
 
 **Estado: PROPUESTA PARA REVISIÓN** · 2026-10-09. Derivado de los requisitos [confirmados](functional-specification.md); las decisiones técnicas no confirmadas se identifican como tales.
 
@@ -14,7 +14,7 @@
 
 - El catálogo, detalle y tienda son visibles sin sesión; únicamente publicaciones activas pueden aparecer.
 - Facebook es el único método de autenticación; un usuario debe registrar username y WhatsApp para publicar.
- más longitud 3–30.
+ y longitud 3–30.
 - Número WhatsApp obligatorio en formato internacional, sin SMS.
 - Nombre, descripción, precio BOB estrictamente positivo en centavos enteros y 1–10 imágenes (10 MiB máximo por original). Entradas JPEG/PNG/WebP y dos variantes WebP de hasta 1600 y 480 px, preservando proporción.
 - Crear/editar/desactivar requiere propiedad del recurso; desactivación lógica, nunca borrado definitivo por esta acción.
