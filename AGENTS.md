@@ -45,3 +45,9 @@ Code identifiers and comments: English. Product/architecture documentation: Span
 
 ## Current branch policy (D-013)
 During initial development, `main` intentionally has **no mandatory branch protection or required approvals**. Do not propose enabling branch protection as a prerequisite for starting work. Existing checks are advisory; still run available verification and report failures honestly. Reconsider protection only when the project owner chooses to do so.
+
+
+## MVP and master execution plan (D-014 to D-017)
+Before any feature implementation read [MVP functional specification](doc/product/functional-specification.md), [master development plan](doc/development/master-plan.md) and only the relevant subsection of [open decisions](doc/product/open-decisions.md).
+Confirmed MVP: Facebook-only login; mandatory WhatsApp and unique username to publish; public listings and storefronts; name, description, price, multi-image gallery; seller-owned edit/deactivate; anonymous contact via prefilled WhatsApp link. **No in-app cart, checkout or payments.**
+Treat recommended numeric limits, data schemas, routes and publication states as **PROPOSED** until approved. Do not build unrelated modules or invent product behavior.
