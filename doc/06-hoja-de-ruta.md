@@ -48,3 +48,19 @@
 
 ## Nota de mantenimiento
 Cada decisión nueva debe registrarse en `doc/README.md` y actualizar la documentación afectada. Diferenciar claramente lo **acordado**, lo **propuesto**, lo **pendiente** y lo **implementado**.
+
+
+## Avance de auditoría y gobernanza (2026-10-09)
+- [x] Documentar riesgos específicos de vibecoding y medidas.
+- [x] Crear fuente de verdad para alcance funcional **pendiente de aprobación**.
+- [x] Crear plantillas de contratos, excepciones, gates y PR.
+- [x] Añadir script y tests de integridad documental.
+- [x] Crear workflow que ejecute esos controles en GitHub Actions.
+- [ ] Confirmar ejecución verde del workflow remoto.
+- [ ] Habilitar reglas de protección de `main` con checks obligatorios y aprobaciones.
+- [ ] Resolver PROD-001..PROD-010 con aprobación explícita.
+- [ ] Convertir convenciones propuestas en configuración ejecutable (lint/TypeScript/tests) al crear scaffold.
+- [ ] Realizar prueba negativa: romper un enlace en un PR y comprobar que el workflow falle.
+- [ ] Establecer contratos y matriz REQ→TEST para primer módulo aprobado.
+
+**Próximo hito:** validar CI y cerrar primero el modelo comercial, identidad/roles y ciclo de vida de publicaciones. No adelantar implementaciones de negocio basadas en supuestos.
