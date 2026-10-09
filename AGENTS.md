@@ -33,3 +33,11 @@ MarketPlace is a reusable template for **independent** Bolivian marketplace webs
 Until the application scaffold exists, commands and CI are **planned**, not executable. Once implemented, run the repository's documented lint, typecheck, test and build commands, plus focused checks for changed areas. Record skipped checks and reasons.
 
 Code identifiers and comments: English. Product/architecture documentation: Spanish; preserve technical identifiers in English.
+
+
+## Mandatory governance before app code
+- Before implementing product behavior, check [core-scope](doc/product/core-scope.md). `CAP` entries are candidates, not approved features; do not decide `PROD-001`.. `PROD-010` silently.
+- Follow [decision precedence and exception handling](doc/ai-governance/decision-policy.md).
+- Define requirements first, then implement; record independent evidence in [quality gates](doc/development/quality-gates.md).
+- Do not treat a workflow file as proof that GitHub branch protection has been enabled.
+- Governance checks available **now**: `node --test tests/governance.test.mjs` and `node scripts/check-governance.mjs`. Run both when changing docs or workflows. App lint/build/E2E remain unavailable until scaffold.
