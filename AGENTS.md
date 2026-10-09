@@ -41,3 +41,7 @@ Code identifiers and comments: English. Product/architecture documentation: Span
 - Define requirements first, then implement; record independent evidence in [quality gates](doc/development/quality-gates.md).
 - Do not treat a workflow file as proof that GitHub branch protection has been enabled.
 - Governance checks available **now**: `node --test tests/governance.test.mjs` and `node scripts/check-governance.mjs`. Run both when changing docs or workflows. App lint/build/E2E remain unavailable until scaffold.
+
+
+## Current branch policy (D-013)
+During initial development, `main` intentionally has **no mandatory branch protection or required approvals**. Do not propose enabling branch protection as a prerequisite for starting work. Existing checks are advisory; still run available verification and report failures honestly. Reconsider protection only when the project owner chooses to do so.
