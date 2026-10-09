@@ -31,3 +31,7 @@ REQ→TEST, comando, resultado, enlace a ejecución CI cuando exista y revisión
 - `.github/workflows/governance.yml`: ejecuta esas pruebas y el validador en push/PR.
 
 **Alcance limitado:** no valida aún cobertura de REQ→TEST, normativa semántica, compilación, SAST, autorización, migraciones ni branch protection. No marcar esos gates como satisfechos.
+
+
+## Política temporal para `main` (D-013, 2026-10-09)
+Durante la fase inicial **no se configurará branch protection ni aprobación obligatoria**. La puerta G6 («checks requeridos + aprobación») pasa a estado **DIFERIDA**, no bloquea cambios ni la inicialización del proyecto. Los scripts de validación y GitHub Actions se conservan para ofrecer retroalimentación, y los agentes deben informar resultados reales. La protección se reconsiderará únicamente cuando el proyecto madure y su responsable así lo decida.
