@@ -1,6 +1,6 @@
 # Plan maestro de desarrollo — MarketPlace Template
 
-**Versión:** 0.2 | **Fecha:** 2026-10-09 | **Estado:** PLAN aprobado en alcance funcional y seis parámetros del MVP; detalles restantes sujetos a decisión.
+**Versión:** 0.3 | **Fecha:** 2026-10-09 | **Estado:** PLAN aprobado en alcance funcional y seis parámetros del MVP; detalles restantes sujetos a decisión.
 
 ## Objetivo y definición de MVP
 Marketplace web reutilizable: visitante navega catálogo, detalle y tienda; vendedor inicia sesión exclusivamente con Facebook, completa username único y WhatsApp, publica artículos con nombre, descripción, precio y galería, edita y da de baja sus artículos; visitante lo contacta por WhatsApp con mensaje predefinido. Sin compra ni pagos en plataforma.
@@ -69,14 +69,14 @@ P11 readiness producción (solo previa aprobación)
 ## P3 — Identidad, sesión y onboarding
 - TASK-0301: seleccionar y registrar librería OAuth/sesiones, alcance mínimo y manejo de fallos.
 - TASK-0302: integración Facebook login/callback, estado de sesión, logout, cookies seguras y CSRF según flujo.
-- TASK-0303: onboarding con username único y fijo inicialmente (3–30 caracteres: minúsculas/dígitos/guion, UNIQUE en BD + UX de conflictos) y WhatsApp obligatorio en formato internacional, sin SMS en el MVP.
+- TASK-0303: onboarding con username único y fijo inicialmente (3–30 caracteres: minúsculas/dígitos/guion interior, sin guion inicial/final ni consecutivos, UNIQUE en BD + UX de conflictos) y WhatsApp obligatorio en formato internacional, sin SMS en el MVP.
 - TASK-0304: guard de perfil completo para acciones de vendedor; configuración por proyecto.
 - TASK-0305: tests de autenticación con proveedor simulado; sesiones vencidas, callbacks erróneos, duplicados y autorización negativa.
 - **Gate:** visitante navega sin login; vendedor no publica sin WhatsApp; cuentas duplicadas no generan vendedores duplicados; tokens protegidos.
 
 ## P4 — Pipeline de imágenes
-- TASK-0401: implementar límites **aprobados** de 1–10 imágenes y 10 MiB máximo por original; definir formatos de entrada, dimensiones y cuotas adicionales aún pendientes.
-- TASK-0402: Sharp: decodificación segura, orientación, retirada de metadata, variantes **WebP aprobadas** e indicadores de tamaño; dimensiones y calidad de compresión sujetas a validación.
+- TASK-0401: aplicar límites **aprobados** de 1–10 imágenes y 10 MiB máximo por original; aceptar JPEG, PNG y WebP. Cerrar límites de megapíxeles y seguridad de entradas especiales.
+- TASK-0402: Sharp: decodificación segura, orientación, retirada de metadatos y **dos variantes WebP aprobadas de hasta 1600 y 480 px**, conservando proporciones; calidad de compresión pendiente de validación.
 - TASK-0403: subida a Spaces, claves únicas, permisos mínimos, URLs de distribución y retry.
 - TASK-0404: galería: selección múltiple, preview, orden, eliminar/reemplazar.
 - TASK-0405: limpieza de objetos huérfanos y consistencia BD/Spaces.
@@ -91,7 +91,7 @@ P11 readiness producción (solo previa aprobación)
 - **Gate:** comportamiento teclado, etiquetas y contraste; sin dependencia de branding concreto.
 
 ## P6 — Publicaciones y gestión del vendedor
-- TASK-0601: crear publicación con perfil autorizado, validar nombre/descripcion, **precio BOB > 0 en centavos enteros**, **galería de 1–10 imágenes** y 10 MiB por original.
+- TASK-0601: crear publicación directamente **activa solo al completar** validación de todos los campos y procesamiento correcto de imágenes; perfil autorizado, nombre/descripcion, **precio BOB > 0 en centavos enteros**, **galería de 1–10 imágenes** y 10 MiB por original. Evitar exposiciones parciales.
 - TASK-0602: edición por propietario con protección frente a operaciones concurrentes.
 - TASK-0603: implementar **baja lógica aprobada** y correcta invalidación pública; **reactivación queda fuera del MVP**, aunque podría incorporarse posteriormente.
 - TASK-0604: dashboard «Mis productos» con estados y paginación.
@@ -160,3 +160,11 @@ No establecer duración o fecha de entrega sin medir esfuerzo, prioridades y dep
 - [ ] P0C: formalizar estructura definitiva de persistencia, rutas, validación y matriz REQ→TEST.
 - [ ] P0D: iniciar P1 técnico con contratos aplicables aprobados.
 - Ver [control de cierre](p0-contract-closure.md). Este avance es documental; no implica ejecución de pruebas ni código implementado.
+
+
+### Actualización P0 aprobada D-019–D-021
+- [x] Reglas de guiones del username definidas: solo interiores, no consecutivos.
+- [x] Publicación activa solo tras validación total y procesamiento completo; sin artículo público parcial.
+- [x] Entradas JPEG/PNG/WebP y salidas WebP con lado mayor máximo de 1600/480 px.
+- [ ] Definir todavía calidad WebP, límites de megapíxeles, manejo de artefactos temporales, reglas restantes de validación y decisiones funcionales pendientes.
+- Pruebas nuevas: username `-foo`, `foo-`, `foo--bar` rechazados; carga con 1 imagen fallida no publica; outputs se comprueban con Sharp como WebP y dimensiones no superiores a límites.
