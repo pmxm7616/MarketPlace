@@ -74,3 +74,24 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 
 ### D-013 — Protección de `main` diferida (2026-10-09)
 **Estado: ACORDADO.** Durante la fase inicial de creación del proyecto **no se habilitará protección obligatoria de la rama `main`**. El equipo podrá trabajar directamente en `main` sin bloqueos de aprobación ni checks requeridos. Los workflows de calidad que existan seguirán siendo informativos y se revisarán sus resultados, pero no bloquearán integraciones. Revisar esta decisión antes de incorporar colaboradores, preparar despliegues productivos o estabilizar una primera versión. Esta decisión reemplaza la urgencia expresada en D-012, que queda **diferida**, no cancelada.
+
+
+## MVP definido y planificación detallada (2026-10-09)
+**El responsable describió el comportamiento del MVP.** Para ejecución técnica, consultar primero:
+- [Especificación funcional y escenarios REQ→TEST](product/functional-specification.md)
+- [Plan maestro por fases y TASK-ID](development/master-plan.md)
+- [Pantallas y rutas propuestas](product/screens-and-routes.md)
+- [Modelo lógico de datos propuesto](product/data-model.md)
+- [Matriz de permisos y estados](product/permissions-and-states.md)
+- [Procesamiento y seguridad de imágenes](product/image-processing.md)
+- [Parámetros aún pendientes de aprobación](product/open-decisions.md)
+
+### Actualización del registro de decisiones
+| ID | Estado | Decisión | Motivo |
+| --- | --- | --- | --- |
+| D-014 | Acordado | MVP de anuncios con contacto WhatsApp, sin checkout ni pagos | Flujo descrito por el responsable |
+| D-015 | Acordado | Facebook como único inicio de sesión; WhatsApp y username único para vender | Identidad y contacto |
+| D-016 | Acordado | Catálogo y tiendas públicas, gestión propia de publicaciones con imágenes optimizadas | Alcance del MVP |
+| D-017 | Propuesto | Procesamiento Sharp/WebP y variantes 1600/480 | Optimización; parámetros sujetos a validación |
+
+**D-007 queda resuelta por D-014.** Las decisiones de detalles (límites, username, estados, onboarding, privacidad y moderación) continúan propuestas en `product/open-decisions.md`. No interpretar el antiguo listado de «módulos candidatos» como contradicción: la especificación funcional prevalece en capacidades aprobadas.
