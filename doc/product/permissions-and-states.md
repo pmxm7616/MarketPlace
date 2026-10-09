@@ -13,12 +13,12 @@
 | Ver borradores/inactivos ajenos | No | No | No | Solo propios | No |
 
 ## Baja lógica aprobada y estados técnicos propuestos
-**APROBADO:** el vendedor puede dar de baja sin borrar definitivamente; el artículo desactivado deja de ser público. **NO aprobado para el MVP:** reactivación (solo futura posibilidad). Los identificadores técnicos `DRAFT`, `ACTIVE`, `INACTIVE` se proponen para implementación, aún pendientes de contrato; eliminación definitiva y moderación también pendientes.
+**APROBADO:** una publicación nueva queda directamente activa y pública solo después de validar todos los campos y procesar todas las imágenes. No se requiere un borrador editable como paso del usuario. **APROBADO:** el vendedor puede dar de baja sin borrar definitivamente; el artículo desactivado deja de ser público. **NO aprobado para el MVP:** reactivación (solo futura posibilidad). Los identificadores técnicos `DRAFT`, `ACTIVE`, `INACTIVE` se proponen para implementación, aún pendientes de contrato; eliminación definitiva y moderación también pendientes.
 
 ## Invariantes
 - Nunca consultar visibilidad por UI solamente.
 - BD/servidor validan ownership en cada modificación.
-- El alta solo se confirma con una galería procesada de 1 a 10 imágenes (máximo 10 MiB por original, salida WebP optimizada).
+- El alta solo se confirma con una galería procesada de 1 a 10 imágenes (máximo 10 MiB por original JPEG/PNG/WebP, dos variantes WebP 1600/480). No existe publicación activa parcial.
 - Solo artículos activos aparecen en catálogos, sitemap y tiendas públicas; la baja no destruye el registro.
 - Cambio de estado requiere invalidar caches públicas apropiadas.
 - Cambios de username no deben secuestrar URLs de otras tiendas.
