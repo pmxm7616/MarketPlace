@@ -1,6 +1,6 @@
 # Documentación de MarketPlace
 
-**Actualización inicial:** 2026-10-09. **Estado:** diseño, sin implementación.
+**Última actualización:** 2026-10-09. **Estado:** P0 en curso; scaffold de aplicación pendiente.
 
 ## Propósito
 Preservar decisiones, hipótesis, restricciones y pendientes para que el desarrollo de la base reutilizable conserve su contexto.
@@ -28,7 +28,7 @@ Preservar decisiones, hipótesis, restricciones y pendientes para que el desarro
 | D-004 | Acordado | Diseñar para escalado horizontal futuro | Evitar reescrituras |
 | D-005 | Acordado | No exigir Redis/Valkey en la primera versión | Mantener la base ligera |
 | D-006 | Propuesto | DigitalOcean + Cloudflare como despliegue | Servicios previstos; detalles por validar |
-| D-007 | Pendiente | Flujo comercial: anuncios/WhatsApp o checkout y pagos | Define entidades y complejidad del dominio |
+| D-007 | Reemplazada por D-014 | Modelo comercial de anuncios con contacto WhatsApp, sin pagos | Alcance decidido |
 | D-008 | Pendiente | Estrategia de autenticación Facebook y manejo de sesiones | Seguridad y configuración por sitio |
 
 Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fecha de revisión. No convertir estimaciones de capacidad en garantías.
@@ -69,7 +69,7 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 | D-009 | Acordado | Requisitos funcionales aprobados antes de comportamiento de producto | Evitar invención por IA |
 | D-010 | Acordado | Gates progresivos y evidencia verificable | Evitar pruebas fabricadas |
 | D-011 | Acordado | Documentación sincronizada en el mismo cambio | Reducir deriva del contexto |
-| D-012 | Pendiente | Habilitar protección de rama y revisión obligatoria | Depende de configuración GitHub |
+| D-012 | Diferida por D-013 | Protección de main no requerida en etapa inicial | Decisión expresa del responsable |
 
 
 ### D-013 — Protección de `main` diferida (2026-10-09)
@@ -116,3 +116,10 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 | D-021 | **ACORDADO** | Entrada JPEG, PNG y WebP; producir dos variantes WebP de hasta 1600 y 480 px, manteniendo proporción |
 
 Siguen **PENDIENTES** calidad de compresión, límites de megapíxeles, gestión transitoria de cargas y restantes decisiones de [producto](product/open-decisions.md). Contratos actualizados en [MVP v0.2](product/contracts-mvp-v1.md); plan maestro [v0.3](development/master-plan.md).
+
+
+## Retomar en Codex (punto de entrada principal)
+- [Guía de traspaso a Codex](development/CODEX-HANDOFF.md)
+- [Checklist de decisiones restantes por prioridad](product/decision-checklist.md)
+
+Los requisitos de producto D-014–D-021 están acordados. Las decisiones del checklist siguen pendientes; no bloquear `TASK-0101` (scaffold neutral). Sin protección obligatoria de `main`.
