@@ -1,11 +1,11 @@
 # Alcance funcional del núcleo — especificación de decisión
 
-**Estado: PENDIENTE de aprobación funcional.** Este documento NO autoriza implementar módulos. Regla: una IA no debe decidir implícitamente el modelo comercial.
+**Estado: HISTÓRICO / SUPERADO PARCIALMENTE.** La [especificación funcional vigente](functional-specification.md) y los ADR D-014–D-021 prevalecen. Esta tabla preserva preguntas anteriores, no revoca funciones aprobadas.
 
 ## Propósito
 Definir el mínimo compartido entre marketplaces independientes, sin acoplarlo a un sector o marca.
 
-## Capacidades candidatas, NO aprobadas
+## Capacidades inicialmente candidatas — registro histórico
 | Código | Capacidad | Estado | Dependencias |
 | --- | --- | --- | --- |
 | CAP-001 | Identidad, sesión y permisos | Candidata | Política OAuth, roles |
@@ -20,8 +20,8 @@ Definir el mínimo compartido entre marketplaces independientes, sin acoplarlo a
 | CAP-010 | Carrito, pedidos y pagos | **NO decidido** | Modelo comercial |
 
 ## Preguntas bloqueantes (no elegir por suposición)
-- PROD-001: ¿El MVP es anuncios con contacto externo, tienda con checkout, o ambos como módulos opcionales?
-- PROD-002: ¿Quién crea publicaciones: usuarios, solo vendedores validados o administradores?
+- PROD-001 (RESUELTO): anuncios con contacto WhatsApp, sin checkout.
+- PROD-002 (RESUELTO): usuario Facebook con username y WhatsApp completo.
 - PROD-003: ¿Qué roles concretos existen y cómo se adquieren?
 - PROD-004: ¿Qué estados y transiciones tendrá una publicación?
 - PROD-005: ¿Hay verificación/moderación previa a publicación y cómo se reporta contenido?
@@ -29,13 +29,13 @@ Definir el mínimo compartido entre marketplaces independientes, sin acoplarlo a
 - PROD-007: ¿Datos públicos/privados de vendedor y política de contacto?
 - PROD-008: ¿Búsqueda geográfica y niveles de ubicación?
 - PROD-009: ¿Se admiten publicaciones gratuitas, destacadas o comisiones?
-- PROD-010: ¿Qué funcionalidades cambian entre sitios derivados?
+- PROD-010 (PARCIAL): instancias independientes, configuración/extensión por cerrar.
 
 ## Criterios para declarar una capacidad APPROVED
 Cada CAP aprobada debe tener: propietario de módulo, historias/escenarios, permisos por operación, esquema de datos, estados y transiciones, errores, criterios REQ verificables, pruebas negativas y documentación de configurabilidad.
 
 ## Política de bloqueo
-Se puede crear tooling genérico y esqueleto sin presuponer PROD-001..010; no se implementan flujos de publicación/autenticación definitiva hasta resolver sus decisiones correspondientes.
+Se puede crear tooling y esqueleto neutral; el código comercial debe cumplir contratos aprobados y no asumir respuestas para preguntas aún abiertas.
 
 
 ## Resolución parcial por definición de MVP (2026-10-09)
