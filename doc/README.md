@@ -32,3 +32,17 @@ Preservar decisiones, hipótesis, restricciones y pendientes para que el desarro
 | D-008 | Pendiente | Estrategia de autenticación Facebook y manejo de sesiones | Seguridad y configuración por sitio |
 
 Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fecha de revisión. No convertir estimaciones de capacidad en garantías.
+
+
+## Gobernanza de desarrollo con Codex (2026-10-09)
+- [Instrucciones automáticas para agentes](../AGENTS.md)
+- [Límites modulares](architecture/module-boundaries.md)
+- [Estándares de código](standards/README.md)
+- [Estrategia de pruebas](testing/testing-strategy.md), [cobertura](testing/coverage-policy.md) y [aceptación](testing/acceptance-criteria.md)
+- [Seguridad](security/security-baseline.md)
+- [Reglas de agentes](ai-governance/agent-rules.md), [protocolo](ai-governance/task-protocol.md) y [revisión](ai-governance/review-checklist.md)
+- [Plantilla de tarea](development/task-template.md), [plantilla de PR](development/pull-request-template.md) y [guía de desarrollo](development/README.md)
+- [Registro de ADR](decisions/README.md)
+- [Investigación y fuentes Codex](ai-governance/codex-research.md)
+
+**Nota:** las reglas documentales están disponibles; aún no existen aplicación, pruebas ejecutables ni CI configurado.
