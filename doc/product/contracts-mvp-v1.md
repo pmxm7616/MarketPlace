@@ -1,4 +1,4 @@
-# Contratos funcionales MVP — versión 0.1
+# Contratos funcionales MVP — versión 0.2
 
 **Estado: PROPUESTA PARA REVISIÓN** · 2026-10-09. Derivado de los requisitos [confirmados](functional-specification.md); las decisiones técnicas no confirmadas se identifican como tales.
 
@@ -6,9 +6,17 @@
 
 - El catálogo, detalle y tienda son visibles sin sesión; únicamente publicaciones activas pueden aparecer.
 - Facebook es el único método de autenticación; un usuario debe registrar username y WhatsApp para publicar.
-- Username de 3 a 30 caracteres entre letras minúsculas, dígitos y guion; único y fijo en el MVP.
+- Username de 3 a 30 caracteres entre letras minúsculas, dígitos y guion interior; sin guion inicial/final ni guiones consecutivos; único y fijo en MVP. Patrón equivalente: `^[a-z0-9]+(?:-[a-z0-9]+)*# Contratos funcionales MVP — versión 0.2
+
+**Estado: PROPUESTA PARA REVISIÓN** · 2026-10-09. Derivado de los requisitos [confirmados](functional-specification.md); las decisiones técnicas no confirmadas se identifican como tales.
+
+## Contratos transversales aprobados
+
+- El catálogo, detalle y tienda son visibles sin sesión; únicamente publicaciones activas pueden aparecer.
+- Facebook es el único método de autenticación; un usuario debe registrar username y WhatsApp para publicar.
+ más longitud 3–30.
 - Número WhatsApp obligatorio en formato internacional, sin SMS.
-- Nombre, descripción, precio BOB estrictamente positivo en centavos enteros y de 1 a 10 imágenes (10 MiB máximo por original, salida WebP).
+- Nombre, descripción, precio BOB estrictamente positivo en centavos enteros y 1–10 imágenes (10 MiB máximo por original). Entradas JPEG/PNG/WebP y dos variantes WebP de hasta 1600 y 480 px, preservando proporción.
 - Crear/editar/desactivar requiere propiedad del recurso; desactivación lógica, nunca borrado definitivo por esta acción.
 - Mensaje WhatsApp incluye nombre del artículo y URL canónica.
 
@@ -19,16 +27,16 @@
 **Postcondiciones:** perfil completo habilita publicación; validación de unicidad en base de datos con manejo de conflicto concurrente.
 **Errores:** no autenticado, formato inválido, username ocupado, fallo de persistencia.
 **Pruebas:** username vacío/2/31 caracteres, mayúsculas, espacios, Unicode, doble registro concurrente, teléfono inválido, sesión vencida.
-**Pendiente:** si se aceptan guiones inicial/final o consecutivos; criterio E.164 estricto y normalización.
+**Aprobado:** no se admiten guiones iniciales, finales ni consecutivos. **Pendiente:** criterio E.164 estricto y normalización.
 
 ## UC-LISTING-001 — Crear publicación
 **Actor:** vendedor autenticado con perfil completo.
 **Entrada:** nombre, descripción, precio en BOB y referencias a 1–10 imágenes WebP procesadas del mismo usuario.
 **Precondiciones:** sesión válida y galería segura; validar límites del original previo al procesamiento.
-**Postcondiciones:** registro perteneciente al usuario autenticado, visible al público solo cuando esté completamente publicado.
+**Postcondiciones (aprobadas):** registro del usuario autenticado pasa a activo/visible como resultado final de la creación solo cuando todos los campos sean válidos y todas las imágenes hayan sido procesadas correctamente. Si falla cualquier imagen, no debe quedar una publicación activa ni parcialmente visible.
 **Errores:** no autenticado, onboarding incompleto, validación, imágenes faltantes/no propias, almacenamiento fallido.
 **Pruebas:** happy path; precio cero/negativo/decimal fuera de precisión; 0/11 fotos; exceso 10 MiB; ID de vendedor manipulado; publicación parcial.
-**Pendiente:** longitudes de nombre/descripcion, formato exacto de precio, estado técnico de borrador y concurrencia.
+**Pendiente:** longitudes de nombre/descripcion, formato exacto de precio, estado técnico transitorio de carga y concurrencia. No se aprobó un borrador editable como paso obligatorio.
 
 ## UC-LISTING-002 — Editar publicación
 **Actor:** propietario autenticado.
