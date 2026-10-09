@@ -68,3 +68,7 @@ Esta estructura es orientativa, no archivos creados.
 
 ## Decisiones aún abiertas
 Modelado del catálogo, búsquedas, permisos, diseño de adaptadores, estrategia de caché de Next.js y flujo exacto de publicación.
+
+
+## Alcance funcional confirmado (2026-10-09)
+La descripción vigente del MVP es [`doc/product/functional-specification.md`](product/functional-specification.md); ver [plan maestro](development/master-plan.md). **Se confirma** Facebook login, WhatsApp obligatorio para publicar, username único, artículos con nombre/descripción/precio/galería, catálogo público, tienda, edición y baja del propietario, contacto por enlace WhatsApp. **No** hay carrito ni pagos dentro de la plataforma. Categorías, filtros avanzados, moderación administrativa y otros módulos antes «candidatos» no forman parte del alcance obligatorio inicial. Los ejemplos anteriores son opciones arquitectónicas, no autorización para implementarlos.
