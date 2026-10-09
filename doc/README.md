@@ -99,3 +99,10 @@ Al cambiar una decisión, actualizar el documento afectado, esta tabla y la fech
 
 ### D-018 — Seis parámetros de MVP confirmados (2026-10-09)
 **Estado: ACORDADO por el responsable.** Username único, fijo inicialmente y de 3–30 caracteres (a–z, 0–9 y guion); WhatsApp obligatorio internacional, sin SMS; galería de 1–10 imágenes con originales ≤10 MiB y salidas WebP optimizadas; precio BOB estrictamente positivo en centavos enteros; baja lógica sin eliminación definitiva (reactivación posterior, no MVP); mensaje predefinido de WhatsApp con nombre del artículo y URL. Ver [registro exhaustivo de parámetros](product/open-decisions.md) y [plan maestro v0.2](development/master-plan.md). No se aprueban implícitamente tamaños de imagen ni texto literal del mensaje.
+
+
+## P0: contratos operativos (2026-10-09)
+- [Contratos del MVP por caso de uso](product/contracts-mvp-v1.md)
+- [Plan de cierre P0 y criterios de aceptación](development/p0-contract-closure.md)
+
+**Estado:** contratos detallados redactados como **PROPUESTA PARA REVISIÓN**. Las seis decisiones D-018 siguen aprobadas; no se han aprobado automáticamente patrones de username adicionales, longitudes de descripción, paginación, valores concretos de calidad WebP ni estados internos. Codex debe consultar estos contratos antes de implementar flujos de vendedor.
