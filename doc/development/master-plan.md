@@ -1,6 +1,6 @@
 # Plan maestro de desarrollo — MarketPlace Template
 
-**Versión:** 0.1 | **Fecha:** 2026-10-09 | **Estado:** PLAN PROPUESTO para implementación progresiva, sujeto a decisiones de detalle.
+**Versión:** 0.2 | **Fecha:** 2026-10-09 | **Estado:** PLAN aprobado en alcance funcional y seis parámetros del MVP; detalles restantes sujetos a decisión.
 
 ## Objetivo y definición de MVP
 Marketplace web reutilizable: visitante navega catálogo, detalle y tienda; vendedor inicia sesión exclusivamente con Facebook, completa username único y WhatsApp, publica artículos con nombre, descripción, precio y galería, edita y da de baja sus artículos; visitante lo contacta por WhatsApp con mensaje predefinido. Sin compra ni pagos en plataforma.
@@ -40,7 +40,7 @@ P11 readiness producción (solo previa aprobación)
 ```
 
 ## P0 — Cierre de contratos funcionales (sin código)
-- TASK-0001: validar decisiones de [open-decisions.md](../product/open-decisions.md): username, WhatsApp, límites de imágenes, precio/moneda, baja, mensajería, moderación, retención.
+- TASK-0001: **completado parcialmente** — aprobar username 3–30/minúsculas/dígitos/guion/único/fijo; WhatsApp internacional obligatorio sin SMS; galería 1–10, originales ≤10 MiB y salida WebP; precio BOB positivo en centavos; baja lógica sin reactivación MVP; mensaje WhatsApp con nombre+URL. Resolver únicamente subdetalles abiertos en [open-decisions.md](../product/open-decisions.md), moderación y retención.
 - TASK-0002: aprobar rutas, estados del artículo y matriz rol/acción.
 - TASK-0003: aprobar esquema lógico, migración inicial y contratos de operaciones.
 - **Entregables:** ADR(s) aprobadas, tablas de estados, matriz de permisos, REQ→TEST actualizada.
@@ -69,14 +69,14 @@ P11 readiness producción (solo previa aprobación)
 ## P3 — Identidad, sesión y onboarding
 - TASK-0301: seleccionar y registrar librería OAuth/sesiones, alcance mínimo y manejo de fallos.
 - TASK-0302: integración Facebook login/callback, estado de sesión, logout, cookies seguras y CSRF según flujo.
-- TASK-0303: onboarding con username único (BD + UX de conflictos) y WhatsApp normalizado.
+- TASK-0303: onboarding con username único y fijo inicialmente (3–30 caracteres: minúsculas/dígitos/guion, UNIQUE en BD + UX de conflictos) y WhatsApp obligatorio en formato internacional, sin SMS en el MVP.
 - TASK-0304: guard de perfil completo para acciones de vendedor; configuración por proyecto.
 - TASK-0305: tests de autenticación con proveedor simulado; sesiones vencidas, callbacks erróneos, duplicados y autorización negativa.
 - **Gate:** visitante navega sin login; vendedor no publica sin WhatsApp; cuentas duplicadas no generan vendedores duplicados; tokens protegidos.
 
 ## P4 — Pipeline de imágenes
-- TASK-0401: definir límites y contratos de upload, formatos y quotas.
-- TASK-0402: Sharp: decode seguro, orientación, retirada metadata, variantes WebP e indicadores de tamaño.
+- TASK-0401: implementar límites **aprobados** de 1–10 imágenes y 10 MiB máximo por original; definir formatos de entrada, dimensiones y cuotas adicionales aún pendientes.
+- TASK-0402: Sharp: decodificación segura, orientación, retirada de metadata, variantes **WebP aprobadas** e indicadores de tamaño; dimensiones y calidad de compresión sujetas a validación.
 - TASK-0403: subida a Spaces, claves únicas, permisos mínimos, URLs de distribución y retry.
 - TASK-0404: galería: selección múltiple, preview, orden, eliminar/reemplazar.
 - TASK-0405: limpieza de objetos huérfanos y consistencia BD/Spaces.
@@ -91,9 +91,9 @@ P11 readiness producción (solo previa aprobación)
 - **Gate:** comportamiento teclado, etiquetas y contraste; sin dependencia de branding concreto.
 
 ## P6 — Publicaciones y gestión del vendedor
-- TASK-0601: crear publicación con perfil autorizado, validación de nombre/descripcion/precio/imágenes.
+- TASK-0601: crear publicación con perfil autorizado, validar nombre/descripcion, **precio BOB > 0 en centavos enteros**, **galería de 1–10 imágenes** y 10 MiB por original.
 - TASK-0602: edición por propietario con protección frente a operaciones concurrentes.
-- TASK-0603: baja de producto y invalidación apropiada; definir si reactivación forma parte del MVP.
+- TASK-0603: implementar **baja lógica aprobada** y correcta invalidación pública; **reactivación queda fuera del MVP**, aunque podría incorporarse posteriormente.
 - TASK-0604: dashboard «Mis productos» con estados y paginación.
 - TASK-0605: integration tests de contratos, ownership, transacciones y fallos en almacenamiento.
 - **Gate:** ningún vendedor puede modificar ítems ajenos; retirados no aparecen en público; no hay registros parciales visibles.
@@ -108,7 +108,7 @@ P11 readiness producción (solo previa aprobación)
 
 ## P8 — Contacto por WhatsApp y pulido SEO
 - TASK-0801: enlace `https://wa.me/{phone}?text={encodeURIComponent(message)}` armado solo con datos válidos.
-- TASK-0802: mensaje predefinido configurable por cada marketplace, con título y URL canónica.
+- TASK-0802: mensaje predefinido de WhatsApp **debe incluir** nombre del artículo y URL canónica; redacción literal y branding aún propuestos.
 - TASK-0803: metadata, canonical, sitemap de activos y tiendas; robots/noindex para privados.
 - TASK-0804: tests de formato E.164, encoding de texto y caracteres especiales, salida externa segura.
 - **Gate:** contacto funciona sin autenticación y apunta al vendedor correcto.
@@ -135,6 +135,9 @@ P11 readiness producción (solo previa aprobación)
 - TASK-1103: backups, monitoreo, disaster recovery, costos y límites de cuenta.
 - TASK-1104: pruebas de carga realistas y runbooks; capacidad determinada por métricas.
 - **Gate:** aprobación humana explícita de lanzamiento.
+
+## Decisiones del MVP confirmadas el 2026-10-09
+La implementación de TASK-0303, TASK-0401/0402, TASK-0601/0603 y TASK-0802 deberá contrastarse contra los seis parámetros aprobados registrados en [open-decisions.md](../product/open-decisions.md). No volver a tratar esos seis aspectos como no decididos; sí resolver sus subdetalles identificados explícitamente.
 
 ## Criterios generales Definition of Done
 - Tarea tiene REQ/TEST y evidencia real; tipo/lint/test/build pasan cuando aplican.
