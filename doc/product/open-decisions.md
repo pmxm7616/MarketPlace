@@ -1,18 +1,18 @@
-# Decisiones de producto pendientes
+# Decisiones de producto — aprobadas y pendientes
 
-**Regla:** estos puntos no se consideran aprobados por aparecer como recomendación. Codex puede preparar una tarea neutral, pero no decidir cambios irreversibles por sí solo.
+**Estado actualizado: 2026-10-09.** Los seis parámetros aprobados expresamente por el responsable son vinculantes para el MVP. Las demás recomendaciones de la tabla siguen sin aprobación. Codex no debe extender el alcance de una aprobación a detalles no mencionados.
 
 | ID | Pregunta | Recomendación inicial | Impacto |
 | --- | --- | --- | --- |
-| PROD-011 | Cómo se elige username | Usuario lo elige al completar perfil; minúsculas ASCII, 3–30, único case-insensitive | Rutas y migración |
-| PROD-012 | Qué pasa si cambia username | Mantener fijo inicialmente; posible cambio con alias/redirect futuro | SEO/URLs |
-| PROD-013 | Validación de WhatsApp | Normalizar número internacional, confirmación declarativa inicialmente; verificación OTP posterior si abuso | Seguridad, costos |
-| PROD-014 | Cantidad de imágenes | 1–10 por artículo, configurable | UX, costos |
-| PROD-015 | Límites de carga | 10 MiB por original; JPG/PNG/WebP; rechazar SVG/GIF/HEIC hasta soporte seguro | UX, seguridad |
-| PROD-016 | Precio | BOB por defecto, importe > 0, exacto en centavos; sin precio negociable inicialmente | BD/UI |
-| PROD-017 | Baja del producto | `ACTIVE` → `INACTIVE` reversible; eliminación definitiva aparte | SEO/cache |
+| PROD-011 | Username | **APROBADO:** 3–30 caracteres, letras minúsculas, números y guion; único. **Pendiente:** normalización y restricciones de guiones inicial/final, elección durante onboarding | Rutas y migración |
+| PROD-012 | Cambio de username | **APROBADO:** username fijo durante MVP. Posibles cambios y redirecciones solo en una fase futura | SEO/URLs |
+| PROD-013 | Número de WhatsApp | **APROBADO:** obligatorio y en formato internacional, sin verificación SMS en MVP. **Pendiente:** UX/validación precisa y gestión de cambios | Seguridad, costos |
+| PROD-014 | Cantidad de imágenes | **APROBADO:** de 1 a 10 imágenes por artículo | UX, costos |
+| PROD-015 | Límites de carga | **APROBADO:** máximo 10 MiB por archivo original; salida optimizada WebP. **Pendiente:** formatos de entrada admitidos, dimensiones máximas y variantes exactas | UX, seguridad |
+| PROD-016 | Precio | **APROBADO:** moneda BOB (Bs), importe mayor a cero, guardado en centavos enteros. **Pendiente:** precio negociable, formatos UX y precio máximo | BD/UI |
+| PROD-017 | Baja del producto | **APROBADO:** desactivar sin borrar definitivamente; reactivación es posibilidad **futura**, no funcionalidad aprobada del MVP. Nombres de estados técnicos sujetos a contrato | SEO/cache |
 | PROD-018 | Edición | Campos e imágenes; mantener URL de producto estable | SEO |
-| PROD-019 | Mensaje WhatsApp | «Hola, vi tu producto "{nombre}" en {nombre del marketplace}. ¿Sigue disponible? {URL}» | UX |
+| PROD-019 | Mensaje WhatsApp | **APROBADO:** el mensaje predefinido incluye nombre del artículo y enlace al producto. **Pendiente:** texto literal, branding, idioma y codificación de plantilla | UX |
 | PROD-020 | Nombre visible | `Tienda de {username}`; slug único en URL | SEO/UX |
 | PROD-021 | Estado previo a publicar | Borrador interno durante carga; publicación atómica al finalizar | Integridad |
 | PROD-022 | Listado | Más recientes primero, 20 por página, cursor si se necesita | Consultas |
@@ -34,4 +34,12 @@
 - Imágenes transformadas y optimizadas al subir.
 - No hay pago ni carrito dentro de la plataforma, conforme al flujo descrito.
 
-La definición comercial esencial permite planificar. Los valores sugeridos solo se convierten en norma tras aprobación.
+## Parámetros formalmente aprobados el 2026-10-09
+- Username único, fijo inicialmente, con 3–30 caracteres: letras minúsculas, dígitos y guion.
+- WhatsApp obligatorio en formato internacional; sin verificación SMS en MVP.
+- De 1 a 10 imágenes por artículo; máximo 10 MiB por original; variantes optimizadas WebP.
+- Precio BOB mayor que cero, representado exactamente mediante centavos enteros.
+- Baja lógica del artículo sin borrado definitivo; la reactivación no forma parte del MVP confirmado.
+- Enlace WhatsApp con mensaje predefinido que incorpora nombre del artículo y URL del detalle.
+
+**No aprobados por implicación:** 1600/480 px, niveles de calidad, formatos de entrada, patrón completo de usernames, reactivación, texto literal del mensaje, comprobación de propiedad del teléfono y otros parámetros no mencionados. Son decisiones aún abiertas.
