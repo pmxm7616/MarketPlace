@@ -36,7 +36,7 @@ Code identifiers and comments: English. Product/architecture documentation: Span
 
 
 ## Mandatory governance before app code
-- Before implementing product behavior, check [core-scope](doc/product/core-scope.md). `CAP` entries are candidates, not approved features; do not decide `PROD-001`.. `PROD-010` silently.
+- Before implementing product behavior, read [approved MVP](doc/product/functional-specification.md), [operation contracts](doc/product/contracts-mvp-v1.md) and [remaining open decisions](doc/product/decision-checklist.md). The old [core-scope](doc/product/core-scope.md) is historical; D-014–D-021 supersede resolved questions.
 - Follow [decision precedence and exception handling](doc/ai-governance/decision-policy.md).
 - Define requirements first, then implement; record independent evidence in [quality gates](doc/development/quality-gates.md).
 - Do not treat a workflow file as proof that GitHub branch protection has been enabled.
@@ -47,7 +47,7 @@ Code identifiers and comments: English. Product/architecture documentation: Span
 During initial development, `main` intentionally has **no mandatory branch protection or required approvals**. Do not propose enabling branch protection as a prerequisite for starting work. Existing checks are advisory; still run available verification and report failures honestly. Reconsider protection only when the project owner chooses to do so.
 
 
-## MVP and master execution plan (D-014 to D-017)
+## MVP and master execution plan (D-014 to D-021)
 Before any feature implementation read [MVP functional specification](doc/product/functional-specification.md), [master development plan](doc/development/master-plan.md) and only the relevant subsection of [open decisions](doc/product/open-decisions.md).
 Confirmed MVP: Facebook-only login; mandatory WhatsApp and unique username to publish; public listings and storefronts; name, description, price, multi-image gallery; seller-owned edit/deactivate; anonymous contact via prefilled WhatsApp link. **No in-app cart, checkout or payments.**
 **APPROVED:** username unique, initially immutable, 3–30 lowercase letters/digits/hyphen; required international-format WhatsApp number without SMS verification; 1–10 images/listing, original file ≤10 MiB and optimized WebP output; positive BOB price stored in integer cents; logical deactivation without permanent deletion (reactivation NOT part of MVP); WhatsApp preset message includes listing name and canonical URL. Do NOT classify these six requirements as pending. **APPROVED additionally (D-019–D-021):** username hyphens only between lowercase alphanumeric groups (no leading/trailing/double hyphens); new listing becomes ACTIVE only when all fields and images are successfully validated and processed; accept JPEG/PNG/WebP inputs and generate two optimized WebP variants with maximum long sides 1600/480px. Exact quality, storage/temporary draft implementation, literal WhatsApp text, technical status naming, detailed schema and routes remain **PROPOSED**. Do not invent product behavior.
@@ -55,3 +55,7 @@ Confirmed MVP: Facebook-only login; mandatory WhatsApp and unique username to pu
 
 ## P0 operation contracts
 Consult [operation contracts](doc/product/contracts-mvp-v1.md) and [P0 closure criteria](doc/development/p0-contract-closure.md) before changing identity, listing, storefront or WhatsApp behavior. These contracts preserve approved requirements and explicitly list unapproved choices; proposed values are NOT implicit authorization.
+
+
+## Codex restart
+Start with [CODEX-HANDOFF.md](doc/development/CODEX-HANDOFF.md). A neutral scaffold may begin without approving product subdetails. Do not build unapproved business logic or claim CI is green without logs.
