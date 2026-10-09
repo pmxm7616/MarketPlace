@@ -20,7 +20,7 @@
 
 ## Secuencia propuesta
 - P0A (actual): documentar operaciones, invariantes, casos de error.
-- P0B: aprobar decisiones funcionales que afectan DB/UX.
+- P0B: **avance parcial:** aprobados username sin guiones extremos/consecutivos, creación directamente activa al finalizar validación/procesamiento, entrada JPEG/PNG/WebP y dos salidas WebP de 1600/480. Continúan pendientes las demás decisiones que afectan DB/UX.
 - P0C: cerrar esquema, rutas y validaciones de runtime, fijar matriz final REQ→TEST.
 - P0D: pasar a P1 (scaffold Next.js y CI técnico).
 
