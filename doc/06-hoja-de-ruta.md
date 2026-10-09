@@ -8,7 +8,7 @@
 - [ ] Revisar y cerrar decisiones funcionales y técnicas.
 
 ## Fase 1 — Diseño
-- [ ] Determinar modelo comercial: anuncios/WhatsApp vs checkout/pagos.
+- [x] Modelo comercial: anuncios con contacto por WhatsApp, sin checkout/pagos.
 - [ ] Definir módulos obligatorios, opcionales y contratos.
 - [ ] Definir entidades, permisos, catálogo, búsqueda y moderación.
 - [ ] Definir estrategia concreta de sesiones Facebook, caché y observabilidad.
@@ -57,13 +57,13 @@ Cada decisión nueva debe registrarse en `doc/README.md` y actualizar la documen
 - [x] Añadir script y tests de integridad documental.
 - [x] Crear workflow que ejecute esos controles en GitHub Actions.
 - [ ] Confirmar ejecución verde del workflow remoto.
-- [ ] Habilitar reglas de protección de `main` con checks obligatorios y aprobaciones.
-- [ ] Resolver PROD-001..PROD-010 con aprobación explícita.
+- [x] Diferir protección obligatoria de `main` durante la fase inicial (D-013).
+- [x] Resolver alcance fundamental (D-014–D-021); continúan detalles en [checklist](product/decision-checklist.md).
 - [ ] Convertir convenciones propuestas en configuración ejecutable (lint/TypeScript/tests) al crear scaffold.
 - [ ] Realizar prueba negativa: romper un enlace en un PR y comprobar que el workflow falle.
 - [ ] Establecer contratos y matriz REQ→TEST para primer módulo aprobado.
 
-**Próximo hito:** validar CI y cerrar primero el modelo comercial, identidad/roles y ciclo de vida de publicaciones. No adelantar implementaciones de negocio basadas en supuestos.
+**Próximo hito:** scaffold técnico sin lógica comercial; cerrar contratos aún abiertos antes de implementar los módulos respectivos. No adelantar implementaciones de negocio basadas en supuestos.
 
 
 ### Ajuste acordado: política de ramas (2026-10-09)
